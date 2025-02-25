@@ -6,163 +6,174 @@
     <title>常用汉字分级练习</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
-            /* 全局样式 */
-            body {
-                font-family: 'Source Han Sans';
-                background: linear-gradient(to bottom, #f0f8ff, #e6f7ff);
-                color: #333;
-                line-height: 1.6;
-                letter-spacing: 0.5px;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+        /* 全局样式 */
+        body {
+            font-family: 'Source Han Sans', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #333333); /* 主页风格背景 */
+            color: #ffffff; /* 白色文字 */
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* 标题样式 */
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffffff; /* 白色文字 */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0; /* 初始透明 */
+            animation: fadeInUp 1s ease-in-out forwards; /* 动画效果 */
+        }
+
+        /* 动画：淡入并向上移动 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 容器样式 */
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+            backdrop-filter: blur(10px); /* 模糊效果 */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* 细线边框 */
+            border-radius: 10px; /* 圆角 */
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #cccccc; /* 浅灰色文字 */
+        }
+
+        /* 按钮样式 */
+        button {
+            background-color: transparent; /* 背景透明 */
+            color: #ffffff; /* 白色文字 */
+            border: 1px solid #ffffff; /* 白色边框 */
+            border-radius: 5px; /* 圆角 */
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease; /* 平滑过渡效果 */
+        }
+
+        
+
+        /* 按钮悬停效果 */
+        button:hover {
+            background-color: #ffffff; /* 背景变为白色 */
+            color: #1a1a1a; /* 文字变为深色 */
+            transform: scale(1.05); /* 放大效果 */
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+            backdrop-filter: blur(10px); /* 模糊效果 */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* 细线边框 */
+            border-radius: 10px; /* 圆角 */
+            padding: 15px;
+            margin-bottom: 30px;
+            transition: transform 0.2s ease-in-out;
+            color: #cccccc; /* 浅灰色文字 */
+        }
+
+        .card-header {
+    margin-top: 10px; /* 针对标题区域的间距调整 */
+}
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
             h1 {
-                text-align: center;
-                margin: 20px 0;
-                font-size: 36px;
-                font-weight: bold;
-                color: #333; /* 文字颜色为白色 */
-                text-transform: uppercase;
-                letter-spacing: 2px;
+                font-size: 2em; /* 减小标题字体大小 */
             }
-            
-            .container {
-                width: 90%;
-                max-width: 600px;
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-            /* 按钮样式 */
+
             button {
-                background-color: #4c85c3;
-                color: white;
-                border: none;
-                border-radius: 25px;
-                padding: 10px 20px;
-                cursor: pointer;
-                margin: 10px;
-                transition: transform 0.2s ease-in-out;
+                padding: 12px 25px; /* 减小按钮尺寸 */
+                font-size: 0.9em;
             }
-            button:hover {
-                transform: scale(1.05);
-            }
-            /* 卡片样式 */
+
             .card {
-                background: white;
-                border-radius: 10px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                padding: 15px;
-                margin-bottom: 15px;
-                transition: transform 0.2s ease-in-out;
+                padding: 12px;
             }
-            .card:hover {
-                transform: translateY(-5px);
-            }
-            /* 测试报告卡片样式 */
-            .report-card {
-                background: #f9f9f9;
-                border-left: 5px solid #4c85c3;
-                padding: 20px;
-                margin-top: 20px;
-            }
-            /*对错选项反馈样式*/
-            .feedback {
-                font-size: 18px;
-                margin-top: 10px;
-            }
-            .feedback.correct {
-                color: rgb(61, 131, 61);
-            }
-            .feedback.wrong {
-                color: rgb(205, 66, 66);
-            }
-
-            /* 响应式设计 */
-            @media (max-width: 768px) {
-                h1 {
-                    font-size: 24px;
-                }
-                .button-container {
-                    max-width: AUTO; /* 手机端按钮更短 */
-                }
-                button {
-                    font-size: inherit; /* 确保字体大小一致 */
-                }
-
-            }
-        </style>
-
+        }
+    </style>
 </head>
 <body>
+    <!-- 标题 -->
     <h1>常用汉字分级练习</h1>
+
+    <!-- 容器 -->
     <div class="container">
         <div id="gradeSelection">
             <button onclick="startTest('grade1-up')">一年级上册</button>
             <div class="description">
-                <!-- 在这里填写1年级上册字库的介绍 -->
                 首阶：本册包含 100 个简单汉字。
             </div>
             <button onclick="startTest('grade1-down')">一年级下册</button>
             <div class="description">
-                <!-- 在这里填写1年级下册字库的介绍 -->
                 首阶：本册包含 250 个简单汉字。
             </div>
             <button onclick="startTest('grade2-up')">二年级上册</button>
             <div class="description">
-                <!-- 在这里填写2年级上册字库的介绍 -->
                 首阶：本册包含 350 个简单汉字。
             </div>
             <button onclick="startTest('grade2-down')">二年级下册</button>
             <div class="description">
-                <!-- 在这里填写2年级上册字库的介绍 -->
                 首阶：本册包含 300 个简单汉字。
             </div>
             <button onclick="startTest('grade3-up')">三年级上册</button>
             <div class="description">
-                <!-- 在这里填写3年级上册字库的介绍 -->
                 次阶：本册包含 300 个中等难度汉字。
             </div>
             <button onclick="startTest('grade3-down')">三年级下册</button>
             <div class="description">
-                <!-- 在这里填写3年级下册字库的介绍 -->
                 次阶：本册包含 300 个中等难度汉字。
             </div>
             <button onclick="startTest('grade4-up')">四年级上册</button>
             <div class="description">
-                <!-- 在这里填写4年级上册字库的介绍 -->
                 次阶：本册包含 200 个中等难度汉字。
             </div>
             <button onclick="startTest('grade4-down')">四年级下册</button>
             <div class="description">
-                <!-- 在这里填写4年级下册字库的介绍 -->
                 次阶：本册包含 200 个中等难度汉字。
             </div>
             <button onclick="startTest('grade5-up')">五年级上册</button>
             <div class="description">
-                <!-- 在这里填写5年级上册字库的介绍 -->
                 终阶：本册包含 150 个较难的汉字。
             </div>
             <button onclick="startTest('grade5-down')">五年级下册</button>
             <div class="description">
-                <!-- 在这里填写5年级下册字库的介绍 -->
                 终阶：本册包含 150 个较难的汉字。
             </div>
             <button onclick="startTest('grade6-up')">六年级上册</button>
             <div class="description">
-                <!-- 在这里填写6年级上册字库的介绍 -->
                 终阶：本册包含 112 个较难的汉字。
             </div>
             <button onclick="startTest('grade6-down')">六年级下册</button>
             <div class="description">
-                <!-- 在这里填写6年级下册字库的介绍 -->
                 终阶：本册包含 80 个较难的汉字。
+                <div style="height: 10px;"></div> <!-- 设置高度为 10px 的空行 -->
             </div>
-
 
             <div class="card">
                 <div class="card-header">
@@ -182,9 +193,8 @@
                     </p>
                 </div>
             </div>
-            <!-- 后续可以添加更多年级 -->
         </div>
-                <form id="testForm" style="display: none;">
+        <form id="testForm" style="display: none;">
             <div id="questions"></div>
             <button type="button" id="submitButton" onclick="submitTest()">提交</button>
         </form>
