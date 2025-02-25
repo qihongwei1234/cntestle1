@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -32,18 +33,16 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             opacity: 0; /* 初始透明 */
-            animation: fadeInUp 1s ease-in-out forwards; /* 动画效果 */
+            animation: fadeIn 1s ease-in-out forwards; /* 动画效果：逐渐显示 */
         }
 
-        /* 动画：淡入并向上移动 */
-        @keyframes fadeInUp {
+        /* 动画：逐渐显示 */
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
@@ -72,13 +71,11 @@
             transition: all 0.3s ease; /* 平滑过渡效果 */
         }
 
-        
-
         /* 按钮悬停效果 */
         button:hover {
             background-color: #ffffff; /* 背景变为白色 */
             color: #1a1a1a; /* 文字变为深色 */
-            transform: scale(1.05); /* 放大效果 */
+            transform: none; /* 移除放大效果 */
         }
 
         /* 卡片样式 */
@@ -94,11 +91,22 @@
         }
 
         .card-header {
-    margin-top: 10px; /* 针对标题区域的间距调整 */
-}
+            margin-top: 10px; /* 针对标题区域的间距调整 */
+        }
 
         .card:hover {
             transform: translateY(-5px);
+        }
+
+        /* 凡例卡片样式 */
+        .example-card {
+            background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+            backdrop-filter: blur(10px); /* 模糊效果 */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* 细线边框 */
+            border-radius: 10px; /* 圆角 */
+            padding: 15px;
+            margin-bottom: 30px;
+            color: #cccccc; /* 浅灰色文字 */
         }
 
         /* 响应式设计 */
@@ -174,8 +182,8 @@
                 终阶：本册包含 80 个较难的汉字。
                 <div style="height: 10px;"></div> <!-- 设置高度为 10px 的空行 -->
             </div>
-
-            <div class="card">
+            <!-- 凡例部分 -->
+            <div class="example-card">
                 <div class="card-header">
                     <h3>凡例</h3>
                 </div>
@@ -201,6 +209,8 @@
         <div id="result" class="report-card" style="display: none;"></div>
         <button id="retryButton" style="display: none;" onclick="location.reload()">再测一次</button>
     </div>
+</body>
+
 
 <script>
     // 字库数据
